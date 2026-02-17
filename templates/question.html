@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Question</title>
+</head>
+<body>
+
+<h2>Chapter: {{ table }}</h2>
+
+<h3>Question {{ q_index + 1 }} / {{ total }}</h3>
+
+<p><strong>{{ question[0] }}</strong></p>
+
+<ul>
+    <li>{{ question[1] }}</li>
+    <li>{{ question[2] }}</li>
+    <li>{{ question[3] }}</li>
+</ul>
+
+<div style="margin-top:20px;">
+    {% if prev_q is not none %}
+        <a href="/chapter/{{ table }}/{{ prev_q }}">⬅ Previous</a>
+    {% endif %}
+
+    {% if next_q is not none %}
+        <a href="/chapter/{{ table }}/{{ next_q }}" style="margin-left:20px;">
+            Next ➡
+        </a>
+    {% endif %}
+</div>
+
+<br><br>
+<a href="/">Back to chapters</a>
+
+</body>
+</html>

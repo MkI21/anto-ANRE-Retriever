@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chapters</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">Choose a Chapter</div>
+
+<div class="main">
+    <ul>
+        {% for chapter in chapters %}
+            <li>
+                <a class="button" href="{{ url_for('show_chapter', table=chapter, q=1) }}">
+                    {{ chapter }}
+                </a>
+                <p>
+
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+</body>
+</html>

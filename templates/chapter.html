@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ table }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="header">
+    <a href="/">Home</a>
+    {{ table }} — Question {{ q }}
+</div>
+
+<div class="container">
+
+    <!-- MAIN QUESTION AREA -->
+    <div class="main">
+        <div class="question-card">
+            <h2>{{ question['question'] }}</h2>
+
+            <div class="answers">
+                <div class="answer">{{ question['answer1'] }}</div>
+                <div class="answer">{{ question['answer2'] }}</div>
+                <div class="answer">{{ question['answer3'] }}</div>
+            </div>
+
+            <div class="nav">
+                {% if q > 1 %}
+                    <a class="button" href="{{ url_for('show_chapter', table=table, q=q-1) }}">
+                        ← Previous
+                    </a>
+                {% endif %}
+
+                {% if q < total %}
+                    <a class="button" href="{{ url_for('show_chapter', table=table, q=q+1) }}">
+                        Next →
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <div class="sidebar">
+        <h3>Questions</h3>
+        <div class="question-list">
+            {% for num in range(1, total+1) %}
+                <a href="{{ url_for('show_chapter', table=table, q=num) }}"
+                   class="{% if num == q %}active{% endif %}">
+                    Question {{ num }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
